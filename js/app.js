@@ -29,12 +29,230 @@ let Seattle={
       this.total+=mult;
     }
 
-  }
+  },
 
+  render:function(){
+    let parent=document.getElementById('parent');
+    console.log(parent);
+    let nameElement=document.createElement('h3');
+    parent.appendChild(nameElement);
+    nameElement.textContent=this.name;
+    let ultElement=document.createElement('ul');
+    parent.appendChild(ultElement);
+    for (let i = 0; i < hour.length; i++) {
+
+      let liElement=document.createElement('li');
+      ultElement.appendChild(liElement);
+      liElement.textContent=`${hour[i]}: ${this.randomCustS[i]} cookis`
+    }
+    let totalElement=document.createElement('li');
+    ultElement.appendChild(totalElement);
+    totalElement.textContent=`total: ${this.total}`
+  }
 };
 Seattle.customersPer();
 Seattle.soldCooki();
 console.log(Seattle.solde);
 console.log(Seattle.total);
+Seattle.render();
 
-//text content //
+let Tokyo={
+  name:'Tokyo',
+  randomCustS:[],
+  minCust:23,
+  maxCust:65,
+  avgCookieSale:6.3,
+  solde:[],
+  total:0,
+  customersPer:function(){
+    for (let i = 0; i < hour.length; i++) {
+
+      this.randomCustS.push(randomNumber(this.minCust,this.maxCust));
+
+    }
+    console.log(this.randomCustS);
+
+  },
+  soldCooki:function(){
+    for (let i = 0; i < this.randomCustS.length; i++) {
+      let mult=this.randomCustS[i] * this.avgCookieSale;
+      mult=Math.floor(mult);
+      this.solde.push (mult) ;
+      this.total+=mult;
+    }
+
+  },
+
+  render:function(){
+    let parent=document.getElementById('parent');
+    console.log(parent);
+    let nameElement=document.createElement('h3');
+    parent.appendChild(nameElement);
+    nameElement.textContent=this.name;
+    let ultElement=document.createElement('ul');
+    parent.appendChild(ultElement);
+    for (let i = 0; i < hour.length; i++) {
+
+      let liElement=document.createElement('li');
+      ultElement.appendChild(liElement);
+      liElement.textContent=`${hour[i]}: ${this.randomCustS[i]} cookis`
+    }
+    let totalElement=document.createElement('li');
+    ultElement.appendChild(totalElement);
+    totalElement.textContent=`total: ${this.total}`;
+  }
+};
+Tokyo.customersPer();
+Tokyo.soldCooki();
+console.log(Tokyo.total);
+Tokyo.render();
+
+let Dubai={
+  name:'Dubai',
+  randomCustS:[],
+  minCust:23,
+  maxCust:65,
+  avgCookieSale:6.3,
+  solde:[],
+  total:0,
+  customersPer:function(){
+    for (let i = 0; i < hour.length; i++) {
+
+      this.randomCustS.push(randomNumber(this.minCust,this.maxCust));
+
+    }
+    console.log(this.randomCustS);
+
+  },
+  soldCooki:function(){
+    for (let i = 0; i < this.randomCustS.length; i++) {
+      let mult=this.randomCustS[i] * this.avgCookieSale;
+      mult=Math.floor(mult);
+      this.solde.push (mult) ;
+      this.total+=mult;
+    }
+
+  },
+
+  render:function(){
+    let parent=document.getElementById('parent');
+    console.log(parent);
+    let nameElement=document.createElement('h3');
+    parent.appendChild(nameElement);
+    nameElement.textContent=this.name;
+    let ultElement=document.createElement('ul');
+    parent.appendChild(ultElement);
+    for (let i = 0; i < hour.length; i++) {
+
+      let liElement=document.createElement('li');
+      ultElement.appendChild(liElement);
+      liElement.textContent=`${hour[i]}: ${this.randomCustS[i]} cookis`
+    }
+    let totalElement=document.createElement('li');
+    ultElement.appendChild(totalElement);
+    totalElement.textContent=`total: ${this.total}`;
+  }
+};
+Dubai.customersPer();
+Dubai.soldCooki();
+Dubai.render();
+
+let Paris={
+  name:'Paris',
+  randomCustS:[],
+  minCust:23,
+  maxCust:65,
+  avgCookieSale:6.3,
+  solde:[],
+  total:0,
+  customersPer:function(){
+    for (let i = 0; i < hour.length; i++) {
+
+      this.randomCustS.push(randomNumber(this.minCust,this.maxCust));
+
+    }
+    console.log(this.randomCustS);
+
+  },
+  soldCooki:function(){
+    for (let i = 0; i < this.randomCustS.length; i++) {
+      let mult=this.randomCustS[i] * this.avgCookieSale;
+      mult=Math.floor(mult);
+      this.solde.push (mult) ;
+      this.total+=mult;
+    }
+
+  },
+
+  render:function(){
+    let parent=document.getElementById('parent');
+    console.log(parent);
+    let nameElement=document.createElement('h3');
+    parent.appendChild(nameElement);
+    nameElement.textContent=this.name;
+    let ultElement=document.createElement('ul');
+    parent.appendChild(ultElement);
+    for (let i = 0; i < hour.length; i++) {
+
+      let liElement=document.createElement('li');
+      ultElement.appendChild(liElement);
+      liElement.textContent=`${hour[i]}: ${this.randomCustS[i]} cookis`
+    }
+    let totalElement=document.createElement('li');
+    ultElement.appendChild(totalElement);
+    totalElement.textContent=`total: ${this.total}`;
+  }
+};
+Paris.customersPer();
+Paris.soldCooki();
+Paris.render();
+
+let Lima={
+  name:'Lima',
+  randomCustS:[],
+  minCust:23,
+  maxCust:65,
+  avgCookieSale:6.3,
+  solde:[],
+  total:0,
+  customersPer:function(){
+    for (let i = 0; i < hour.length; i++) {
+
+      this.randomCustS.push(randomNumber(this.minCust,this.maxCust));
+
+    }
+    console.log(this.randomCustS);
+
+  },
+  soldCooki:function(){
+    for (let i = 0; i < this.randomCustS.length; i++) {
+      let mult=this.randomCustS[i] * this.avgCookieSale;
+      mult=Math.floor(mult);
+      this.solde.push (mult) ;
+      this.total+=mult;
+    }
+
+  },
+
+  render:function(){
+    let parent=document.getElementById('parent');
+    console.log(parent);
+    let nameElement=document.createElement('h3');
+    parent.appendChild(nameElement);
+    nameElement.textContent=this.name;
+    let ultElement=document.createElement('ul');
+    parent.appendChild(ultElement);
+    for (let i = 0; i < hour.length; i++) {
+
+      let liElement=document.createElement('li');
+      ultElement.appendChild(liElement);
+      liElement.textContent=`${hour[i]}: ${this.randomCustS[i]} cookis`
+    }
+    let totalElement=document.createElement('li');
+    ultElement.appendChild(totalElement);
+    totalElement.textContent=`total: ${this.total}`;
+  }
+};
+Lima.customersPer();
+Lima.soldCooki();
+Lima.render();
