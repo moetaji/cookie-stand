@@ -4,37 +4,83 @@ function randomNumber(min, max) {
 }
 let hour = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let branches = [];
-function BranchS(name, minCust, maxCust, avgCookieSale) {
+function BranchS(name, minCust, maxCust, avgCooki) {
   this.name = name;
+  this.minCust = minCust;
   this.maxCust = maxCust;
-  this.maxCust = maxCust;
-  this.avgCookieSale = avgCookieSale;
-  this.brancHour = [];
-
-  let seatl = new BranchS('seatl', 23, 65, 6.3);
-  let tokyo = new BranchS('tokyo', 3, 24, 1.2);
-  let Dubai = new BranchS('Dubai', 11, 38, 3.7);
-  let Paris = new BranchS('Paris', 20, 38, 2.3);
-  let Lima = new BranchS('Lima', 2, 16, 4.6);
+  this.avgCooki = avgCooki;
+  this.perHourArray = [];
+  this.total = 0;
   branches.push(this);
-
-  console.log(seatl);
-  console.log(tokyo);
-  console.log(Dubai);
-  console.log(Paris);
-  console.log(Lima);
 }
-BranchS.prototype.getRandomN = function () {
+BranchS.prototype.perHour = function () {
   for (let i = 0; i < hour.length; i++) {
-    this.brancHour.push = (Math.floor(randomNumber(this.minCust, this.maxCust)) * this.avgCookieSale);
+    this.perHourArray.push(Math.floor(randomNumber(this.minCust, this.maxCust) * this.avgCooki));
+    this.total += this.perHourArray[i];
+    // console.log(this.total);
+    // console.log(this.perHourArray);
   }
-  //   this.getRandomN();
-  // };
+};
 
-  BranchS.prototype.render = function () {
-    let parentElement = document.getElementById('salmon');
-    console.log(parentElement);
-  };
+const seatl = new BranchS('seatl', 23, 65, 6.3);
+// seatl.perHour();
+const tokyo = new BranchS('tokyo', 3, 24, 1.2);
+// tokyo.perHour();
+const Dubai = new BranchS('Dubai', 11, 38, 3.7);
+// Dubai.perHour();
+const Paris = new BranchS('Paris', 20, 38, 2.3);
+// Paris.perHour();
+const Lima = new BranchS('Lima', 2, 16, 4.6);
+// Lima.perHour();
+console.log(branches);
+
+let main = document.getElementById('parent');
+let table = document.createElement('table');
+main.appendChild(table);
+
+function makingHeader() {
+  let headingRow = document.createElement('tr');
+  table.appendChild(headingRow);
+  let fThElement = document.createElement('th');
+  headingRow.appendChild(fThElement);
+  fThElement.textContent = 'name';
+
+  for (let i = 0; i < hour.length; i++) {
+    fThElement = document.createElement('th');
+    headingRow.appendChild(fThElement);
+    fThElement.textContent = hour[i];
+
+  }
+  let finalTh = document.createElement('th');
+  headingRow.appendChild(finalTh);
+  finalTh.textContent = 'Daily Location total';
+}
+
+BranchS.prototype.render = function () {
+  let shopeRow = document.createElement('tr');
+  table.appendChild(shopeRow);
+  let nameTd = document.createElement('td');
+  shopeRow.appendChild(nameTd);
+  nameTd.textContent = this.name;
+
+  for (let i = 0; i < hour.length; i++) {
+    let tdRow = document.createElement('td');
+    shopeRow.appendChild(tdRow);
+
+    tdRow.textContent = `${this.perHourArray[i]}`;
+
+  }
+  let totalTd = document.createElement('td');
+  shopeRow.appendChild(totalTd);
+  totalTd.textContent = `${this.total}`;
+};
+
+makingHeader();
+for (let i = 0; i < branches.length; i++) {
+  branches[i].perHour();
+
+  branches[i].render();
+}
 
 // let Seattle={
 //   name:'seatl',
@@ -56,12 +102,12 @@ BranchS.prototype.getRandomN = function () {
 //   soldCooki:function(){
 //     for (let i = 0; i < this.randomCustS.length; i++) {
 //       let mult=this.randomCustS[i] * this.avgCookieSale;
-//       mult=Math.floor(mult);
+//      mult=Math.floor(mult);
 //       this.solde.push (mult) ;
 //       this.total+=mult;
 //     }
 
-//   },
+//   }
 
 //   render:function(){
 //     let parent=document.getElementById('parent');
@@ -86,8 +132,7 @@ BranchS.prototype.getRandomN = function () {
 // Seattle.soldCooki();
 // console.log(Seattle.solde);
 // console.log(Seattle.total);
-// Seattle.render();
-
+// / Seattle.render();
 // let Tokyo={
 //   name:'Tokyo',
 //   randomCustS:[],
