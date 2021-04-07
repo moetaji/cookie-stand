@@ -75,12 +75,39 @@ BranchS.prototype.render = function () {
   totalTd.textContent = `${this.total}`;
 };
 
+function makingFoter() {
+  let foterRow = document.createElement('tr');
+  table.appendChild(foterRow);
+  let fTh = document.createElement('th');
+  foterRow.appendChild(fTh);
+  fTh.textContent = 'Total';
+  let totalEachHour;
+  let finaltotal = 0;
+  for (let i = 0; i < hour.length; i++) {
+    totalEachHour = 0;
+    for (let j = 0; j < branches.length; j++) {
+      totalEachHour+= branches[j].perHourArray[i];
+      finaltotal+=branches[j].perHourArray[i];
+      
+    }
+    let foterTh=document.createElement('th');
+    foterRow.appendChild(foterTh);
+    foterTh.textContent=totalEachHour;
+    
+  }
+  let allTotalTh=document.createElement('th');
+  foterRow.appendChild(allTotalTh);
+  allTotalTh.textContent=finaltotal;
+  
+  
+}
 makingHeader();
 for (let i = 0; i < branches.length; i++) {
   branches[i].perHour();
 
   branches[i].render();
 }
+makingFoter();
 
 // let Seattle={
 //   name:'seatl',
