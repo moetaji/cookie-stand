@@ -1,7 +1,9 @@
 table,tr,th,td{
     border: 1px solid black;
     border-collapse:collapse;
-    margin-top: 5%;
+    margin-top: 15%;
+    text-align: center;
+    padding-left: 30px;
 }
 *{
     box-sizing: border-box;
@@ -40,4 +42,7 @@ margin-bottom: 30px;
 }
 footer{
     background-color: gray;
+}
+.form{
+    border: solid 2px black;
 }
