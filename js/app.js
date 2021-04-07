@@ -86,29 +86,71 @@ function makingFoter() {
   for (let i = 0; i < hour.length; i++) {
     totalEachHour = 0;
     for (let j = 0; j < branches.length; j++) {
-      totalEachHour+= branches[j].perHourArray[i];
-      finaltotal+=branches[j].perHourArray[i];
-      
+      totalEachHour += branches[j].perHourArray[i];
+      finaltotal += branches[j].perHourArray[i];
+
     }
-    let foterTh=document.createElement('th');
+    let foterTh = document.createElement('th');
     foterRow.appendChild(foterTh);
-    foterTh.textContent=totalEachHour;
-    
+    foterTh.textContent = totalEachHour;
+
   }
-  let allTotalTh=document.createElement('th');
+  let allTotalTh = document.createElement('th');
   foterRow.appendChild(allTotalTh);
-  allTotalTh.textContent=finaltotal;
-  
-  
+  allTotalTh.textContent = finaltotal;
+
+
+}
+let cookiform = document.getElementById('cookisform');
+console.log(cookiform);
+
+cookiform.addEventListener('submit', submiter);
+
+function submiter(event) {
+  event.preventDefault();
+  console.log(event);
+  let name = event.target.nameField.value;
+  console.log(name);
+
+  let avgCooki = event.target.avgaCooki.value;
+  console.log(avgCooki);
+  let minCust = event.target.minCust.value;
+  console.log(minCust);
+  let maxCust = event.target.maxCust.value;
+  console.log(maxCust);
+  let newStor = new BranchS(name, minCust, maxCust, avgCooki);
+  console.log(newStor);
+  let shops = document.getElementById('parent');
+  console.log(shops);
+
+  table.textContent = '';
+  for (let i = 0; i < branches.length; i++) {
+    branches[i].perHour();
+
+    branches[i].render();
+
+
+  } makingFoter();
 }
 makingHeader();
 for (let i = 0; i < branches.length; i++) {
   branches[i].perHour();
 
   branches[i].render();
+
 }
 makingFoter();
 
+
+
+//form lab9//
+
+
+
+
+
+
+//old from lab 6
 // let Seattle={
 //   name:'seatl',
 //   randomCustS:[],
