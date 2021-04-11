@@ -112,11 +112,11 @@ function submiter(event) {
   let name = event.target.nameField.value;
   console.log(name);
 
-  let avgCooki = event.target.avgCooki.value;
+  let avgCooki =parseFloat(event.target.avgCooki.value);
   console.log(avgCooki);
-  let minCust = event.target.minCust.value;
+  let minCust =parseInt(event.target.minCust.value);
   console.log(minCust);
-  let maxCust = event.target.maxCust.value;
+  let maxCust =parseInt(event.target.maxCust.value);
   console.log(maxCust);
   if (maxCust < minCust) {
     let temp = maxCust;
@@ -132,9 +132,9 @@ function submiter(event) {
   makingHeader();
   for (let i = 0; i < branches.length; i++) {
     branches[i].total = 0;
-    branches[i].perHour(i);
+    branches[i].perHour();
 
-    branches[i].render(i);
+    branches[i].render();
 
   }
   makingFoter();
@@ -143,8 +143,8 @@ function submiter(event) {
 makingHeader();
 for (let i = 0; i < branches.length; i++) {
 
-  branches[i].perHour(i);
-  branches[i].render(i);
+  branches[i].perHour();
+  branches[i].render();
 
 }
 
