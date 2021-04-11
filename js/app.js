@@ -99,8 +99,8 @@ function makingFoter() {
   foterRow.appendChild(allTotalTh);
   allTotalTh.textContent = finaltotal;
 
-
 }
+
 let cookiform = document.getElementById('cookisform');
 console.log(cookiform);
 
@@ -112,35 +112,43 @@ function submiter(event) {
   let name = event.target.nameField.value;
   console.log(name);
 
-  let avgCooki = event.target.avgaCooki.value;
+  let avgCooki = event.target.avgCooki.value;
   console.log(avgCooki);
   let minCust = event.target.minCust.value;
   console.log(minCust);
   let maxCust = event.target.maxCust.value;
   console.log(maxCust);
+  if (maxCust < minCust) {
+    let temp = maxCust;
+    maxCust = minCust;
+    minCust = temp;
+  }
   let newStor = new BranchS(name, minCust, maxCust, avgCooki);
-  console.log(newStor);
-  let shops = document.getElementById('parent');
-  console.log(shops);
+
+  let newShop = document.getElementById('parent');
+  console.log(newShop);
 
   table.textContent = '';
+  makingHeader();
   for (let i = 0; i < branches.length; i++) {
-    branches[i].perHour();
+    branches[i].total = 0;
+    branches[i].perHour(i);
 
-    branches[i].render();
+    branches[i].render(i);
 
-
-  } makingFoter();
+  }
+  makingFoter();
 }
+
 makingHeader();
 for (let i = 0; i < branches.length; i++) {
-  branches[i].perHour();
 
-  branches[i].render();
+  branches[i].perHour(i);
+  branches[i].render(i);
 
 }
-makingFoter();
 
+makingFoter();
 
 
 //form lab9//
