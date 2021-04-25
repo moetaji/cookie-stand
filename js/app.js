@@ -2,7 +2,7 @@
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-let hour = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let hour = [ '6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm',];
 let branches = [];
 function BranchS(name, minCust, maxCust, avgCooki) {
   this.name = name;
@@ -15,7 +15,9 @@ function BranchS(name, minCust, maxCust, avgCooki) {
 }
 BranchS.prototype.perHour = function () {
   for (let i = 0; i < hour.length; i++) {
-    this.perHourArray.push(Math.floor(randomNumber(this.minCust, this.maxCust) * this.avgCooki));
+    this.perHourArray.push(
+      Math.floor(randomNumber(this.minCust, this.maxCust) * this.avgCooki)
+    );
     this.total += this.perHourArray[i];
     // console.log(this.total);
     // console.log(this.perHourArray);
@@ -49,7 +51,6 @@ function makingHeader() {
     fThElement = document.createElement('th');
     headingRow.appendChild(fThElement);
     fThElement.textContent = hour[i];
-
   }
   let finalTh = document.createElement('th');
   headingRow.appendChild(finalTh);
@@ -68,7 +69,6 @@ BranchS.prototype.render = function () {
     shopeRow.appendChild(tdRow);
 
     tdRow.textContent = `${this.perHourArray[i]}`;
-
   }
   let totalTd = document.createElement('td');
   shopeRow.appendChild(totalTd);
@@ -88,17 +88,14 @@ function makingFoter() {
     for (let j = 0; j < branches.length; j++) {
       totalEachHour += branches[j].perHourArray[i];
       finaltotal += branches[j].perHourArray[i];
-
     }
     let foterTh = document.createElement('th');
     foterRow.appendChild(foterTh);
     foterTh.textContent = totalEachHour;
-
   }
   let allTotalTh = document.createElement('th');
   foterRow.appendChild(allTotalTh);
   allTotalTh.textContent = finaltotal;
-
 }
 
 let cookiform = document.getElementById('cookisform');
@@ -123,7 +120,7 @@ function submiter(event) {
     maxCust = minCust;
     minCust = temp;
   }
-  let newStor = new BranchS(name, minCust, maxCust, avgCooki);
+  new BranchS(name, minCust, maxCust, avgCooki);
 
   let newShop = document.getElementById('parent');
   console.log(newShop);
@@ -135,28 +132,19 @@ function submiter(event) {
     branches[i].perHour(i);
 
     branches[i].render(i);
-
   }
   makingFoter();
 }
 
 makingHeader();
 for (let i = 0; i < branches.length; i++) {
-
   branches[i].perHour(i);
   branches[i].render(i);
-
 }
 
 makingFoter();
 
-
 //form lab9//
-
-
-
-
-
 
 //old from lab 6
 // let Seattle={
